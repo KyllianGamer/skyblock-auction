@@ -1,1 +1,1 @@
-ws: python Final_Server.py
+worker: python Final_Server.py
