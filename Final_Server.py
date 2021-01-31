@@ -117,7 +117,7 @@ class Server(WebSocket):
 
 handler = Handler()
 handler.start()
-server = WebSocketServer('192.168.0.149', 8080, Server)
+server = WebSocketServer('skyblock-auction.herokuapp.com', 8080, Server)
 server.serve_forever()
     
 
