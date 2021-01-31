@@ -1,5 +1,4 @@
 simple_websocket_server
 asyncio
 websockets
-threading
 requests
