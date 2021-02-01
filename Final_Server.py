@@ -91,6 +91,8 @@ class Handler(threading.Thread):
             #print(iPage)
             try:
                 PAGES.append(requests.get('https://api.hypixel.net/skyblock/auctions?page=' + str(iPage) + '&key=' + API_KEY).json()['auctions'])
+            except:
+                print("There was a problem while fetching the data, is the Hypixel Service down?")
         for keyword in keywords:
             getItem = self.CheckPrice(keyword, PAGES)
             if getItem != False:
