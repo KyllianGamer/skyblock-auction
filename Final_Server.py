@@ -114,6 +114,7 @@ class Server(WebSocket):
         print(self.address, 'closed')
         connections.remove(self)
 
+print("Listening...")
 handler = Handler()
 handler.start()
 server = WebSocketServer("0.0.0.0", 8080, Server)
