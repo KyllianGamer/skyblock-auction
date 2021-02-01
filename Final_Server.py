@@ -98,6 +98,8 @@ class Handler(threading.Thread):
     def run(self):
         while True:
             if len(connections) > 0:
+                for ws in connections:
+                    ws.send("IDLE")
                 asyncio.run(self.LoadData())
             
             
