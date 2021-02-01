@@ -2,3 +2,4 @@ simple_websocket_server
 asyncio
 websockets
 requests
+redis

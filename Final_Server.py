@@ -114,10 +114,10 @@ class Server(WebSocket):
         print(self.address, 'closed')
         connections.remove(self)
 
-
+URL = os.environ['REDIS_URL']
 handler = Handler()
 handler.start()
-server = WebSocketServer('localhost', 8080, Server)
+server = WebSocketServer(URL, 8080, Server)
 server.serve_forever()
     
 
