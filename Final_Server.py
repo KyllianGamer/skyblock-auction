@@ -99,7 +99,7 @@ class Handler(threading.Thread):
         while True:
             if len(connections) > 0:
                 for ws in connections:
-                    ws.send("IDLE")
+                    ws.send_message("IDLE")
                 asyncio.run(self.LoadData())
             
             
