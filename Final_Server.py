@@ -83,7 +83,11 @@ class Handler(threading.Thread):
         PAGES.append(pageData['auctions'])
         pages = pageData['totalPages']
         for iPage in range(pages):
-            print(iPage)
+            if iPage % 5 == 0:
+                for ws in connections:
+                    ws.send_message("IDLE")
+                    print("/// Idle ///")
+            #print(iPage)
             PAGES.append(requests.get('https://api.hypixel.net/skyblock/auctions?page=' + str(iPage) + '&key=' + API_KEY).json()['auctions'])
         for keyword in keywords:
             getItem = self.CheckPrice(keyword, PAGES)
@@ -98,8 +102,6 @@ class Handler(threading.Thread):
     def run(self):
         while True:
             if len(connections) > 0:
-                for ws in connections:
-                    ws.send_message("IDLE")
                 asyncio.run(self.LoadData())
             
             
