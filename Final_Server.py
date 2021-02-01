@@ -116,7 +116,7 @@ class Server(WebSocket):
 
 handler = Handler()
 handler.start()
-server = WebSocketServer(URL, 8080, Server)
+server = WebSocketServer("0.0.0.0", 8080, Server)
 server.serve_forever()
     
 
