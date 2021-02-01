@@ -117,7 +117,7 @@ class Server(WebSocket):
 print("Listening...")
 handler = Handler()
 handler.start()
-server = WebSocketServer("/", 8080, Server)
+server = WebSocketServer("", 8080, Server)
 server.serve_forever()
     
 
