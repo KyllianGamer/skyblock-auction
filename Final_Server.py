@@ -114,7 +114,7 @@ class Server(WebSocket):
         print(self.address, 'closed')
         connections.remove(self)
 
-print("Listening...")
+print("Listening on PORT " + os.getenv('API_KEY') + " ...")
 handler = Handler()
 handler.start()
 server = WebSocketServer("", os.getenv('PORT'), Server)
