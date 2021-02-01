@@ -89,7 +89,8 @@ class Handler(threading.Thread):
                 print("/// Idle ///")
                 print(iPage)
             #print(iPage)
-            PAGES.append(requests.get('https://api.hypixel.net/skyblock/auctions?page=' + str(iPage) + '&key=' + API_KEY).json()['auctions'])
+            try:
+                PAGES.append(requests.get('https://api.hypixel.net/skyblock/auctions?page=' + str(iPage) + '&key=' + API_KEY).json()['auctions'])
         for keyword in keywords:
             getItem = self.CheckPrice(keyword, PAGES)
             if getItem != False:
