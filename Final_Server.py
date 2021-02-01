@@ -117,7 +117,7 @@ class Server(WebSocket):
 print("Listening...")
 handler = Handler()
 handler.start()
-server = WebSocketServer("skyblock-auction.herokuapp.com", os.getenv("PORT"), Server)
+server = WebSocketServer("skyblock-auction.herokuapp.com", 8080, Server)
 server.serve_forever()
     
 
