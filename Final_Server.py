@@ -83,6 +83,7 @@ class Handler(threading.Thread):
                 return lowest_item
             global new_dupes
             new_dupes.append(lowest_item['uuid'])
+            print("DUPLICATES: ")
             print(new_dupes)
         else:
             return False
