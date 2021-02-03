@@ -41,6 +41,8 @@ keywords = [
 ]
 
 connections = []
+duplicates = []
+new_dupes = []
 
 class Handler(threading.Thread):
     def getName(self, uuid):
@@ -73,7 +75,11 @@ class Handler(threading.Thread):
                 lowest_price_2 = price
         procent = 100-(lowest_price / lowest_price_2 * 100)
         if procent >= CHECK_PROCENT:
-            return lowest_item
+            if duplicates.includes(lowest_item['auctioneer']):
+                return False
+            else:
+                return lowest_item
+            new_dupes.append(lowest_item['auctioneer'])
         else:
             return False
 
@@ -106,6 +112,8 @@ class Handler(threading.Thread):
     def run(self):
         while True:
             if len(connections) > 0:
+                duplicates = new_dupes
+                new_dupes = []
                 asyncio.run(self.LoadData())
             
             
