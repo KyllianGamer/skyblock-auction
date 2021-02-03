@@ -77,7 +77,7 @@ class Handler(threading.Thread):
         if procent >= CHECK_PROCENT:
             global duplicates
             global new_dupes
-            if duplicates.includes(lowest_item['auctioneer']):
+            if lowest_item['auctioneer'] in duplicates:
                 return False
             else:
                 return lowest_item
