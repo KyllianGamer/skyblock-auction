@@ -76,13 +76,14 @@ class Handler(threading.Thread):
         procent = 100-(lowest_price / lowest_price_2 * 100)
         if procent >= CHECK_PROCENT:
             global duplicates
-            global new_dupes
             if lowest_item['uuid'] in duplicates:
                 print("Dupe")
                 return False
             else:
                 return lowest_item
+            global new_dupes
             new_dupes.append(lowest_item['uuid'])
+            print(new_dupes)
         else:
             return False
 
@@ -112,13 +113,13 @@ class Handler(threading.Thread):
     def run(self):
         while True:
             if len(connections) > 0:
+                print("Fetching ...")
+                asyncio.run(self.LoadData())
+                print(new_dupes)
                 global duplicates
                 global new_dupes
                 duplicates = new_dupes
                 new_dupes = []
-                print("Fetching ...")
-                asyncio.run(self.LoadData())
-                print(new_dupes)
             
             
 
