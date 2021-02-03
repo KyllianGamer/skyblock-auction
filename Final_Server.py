@@ -78,6 +78,7 @@ class Handler(threading.Thread):
             global duplicates
             global new_dupes
             if lowest_item['auctioneer'] in duplicates:
+                print("Dupe")
                 return False
             else:
                 return lowest_item
@@ -92,6 +93,7 @@ class Handler(threading.Thread):
         pages = pageData['totalPages']
         for iPage in range(pages):
             if iPage % 5 == 0:
+                print("Fetching ...")
                 for ws in connections:
                     ws.send_message("IDLE")
             try:
