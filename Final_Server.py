@@ -75,6 +75,8 @@ class Handler(threading.Thread):
                 lowest_price_2 = price
         procent = 100-(lowest_price / lowest_price_2 * 100)
         if procent >= CHECK_PROCENT:
+            global duplicates
+            global new_dupes
             if duplicates.includes(lowest_item['auctioneer']):
                 return False
             else:
@@ -92,9 +94,6 @@ class Handler(threading.Thread):
             if iPage % 5 == 0:
                 for ws in connections:
                     ws.send_message("IDLE")
-                print("/// Idle ///")
-                print(iPage)
-            #print(iPage)
             try:
                 PAGES.append(requests.get('https://api.hypixel.net/skyblock/auctions?page=' + str(iPage) + '&key=' + API_KEY).json()['auctions'])
             except:
@@ -112,6 +111,8 @@ class Handler(threading.Thread):
     def run(self):
         while True:
             if len(connections) > 0:
+                global duplicates
+                global new_dupes
                 duplicates = new_dupes
                 new_dupes = []
                 asyncio.run(self.LoadData())
