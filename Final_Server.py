@@ -77,12 +77,12 @@ class Handler(threading.Thread):
         if procent >= CHECK_PROCENT:
             global duplicates
             global new_dupes
-            if lowest_item['auctioneer'] in duplicates:
+            if lowest_item['uuid'] in duplicates:
                 print("Dupe")
                 return False
             else:
                 return lowest_item
-            new_dupes.append(lowest_item['auctioneer'])
+            new_dupes.append(lowest_item['uuid'])
         else:
             return False
 
@@ -93,7 +93,6 @@ class Handler(threading.Thread):
         pages = pageData['totalPages']
         for iPage in range(pages):
             if iPage % 5 == 0:
-                print("Fetching ...")
                 for ws in connections:
                     ws.send_message("IDLE")
             try:
@@ -117,7 +116,9 @@ class Handler(threading.Thread):
                 global new_dupes
                 duplicates = new_dupes
                 new_dupes = []
+                print("Fetching ...")
                 asyncio.run(self.LoadData())
+                print(new_dupes)
             
             
 
