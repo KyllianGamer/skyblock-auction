@@ -115,9 +115,9 @@ class Handler(threading.Thread):
             if len(connections) > 0:
                 print("Fetching ...")
                 asyncio.run(self.LoadData())
-                print(new_dupes)
                 global duplicates
                 global new_dupes
+                print(new_dupes)
                 duplicates = new_dupes
                 new_dupes = []
             
