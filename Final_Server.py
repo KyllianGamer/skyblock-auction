@@ -76,15 +76,15 @@ class Handler(threading.Thread):
         procent = 100-(lowest_price / lowest_price_2 * 100)
         if procent >= CHECK_PROCENT:
             global duplicates
+            global new_dupes
+            new_dupes.append(lowest_item['uuid'])
+            print("DUPLICATES: ")
+            print(new_dupes)
             if lowest_item['uuid'] in duplicates:
                 print("Dupe")
                 return False
             else:
                 return lowest_item
-            global new_dupes
-            new_dupes.append(lowest_item['uuid'])
-            print("DUPLICATES: ")
-            print(new_dupes)
         else:
             return False
 
