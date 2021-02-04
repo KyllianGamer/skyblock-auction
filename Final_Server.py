@@ -37,7 +37,14 @@ keywords = [
     "Shadow Assassin Helmet",
     "Shadow Assassin Chestplate",
     "Shadow Assassin Leggings",
-    "Shadow Assassin Boots"
+    "Shadow Assassin Boots",
+    "] Turtle",
+    "Deep Sea Orb",
+    "L.A.S.R.",
+    "Diamante's Handle", 
+    "Necron's Handle",
+    "Soul Eater",
+    "Last Stand"
 ]
 
 connections = []
@@ -84,6 +91,7 @@ class Handler(threading.Thread):
                 print("Dupe")
                 return False
             else:
+                lowest_item['pot_profit'] = lowest_price_2 - lowest_price
                 return lowest_item
         else:
             return False
@@ -110,7 +118,7 @@ class Handler(threading.Thread):
                     return
                 print(getItem)
                 for ws in connections:
-                    ws.send_message("ADD " + getItem['item_name'].replace(" ", "_") + " " + get_name + " " + getItem['tier'] + " " + str(getItem['starting_bid']) + " " + getItem['item_lore'].replace(" ", "_"))
+                    ws.send_message("ADD " + getItem['item_name'].replace(" ", "_") + " " + get_name + " " + getItem['tier'] + " " + str(getItem['starting_bid']) + " " + getItem['item_lore'].replace(" ", "_") + " " + getItem['pot_profit'])
     def run(self):
         while True:
             if len(connections) > 0:
