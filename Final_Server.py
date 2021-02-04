@@ -118,8 +118,8 @@ class Handler(threading.Thread):
                     return
                 print(getItem)
                 for ws in connections:
-                    print("ADD " + getItem['item_name'].replace(" ", "_") + " " + get_name + " " + getItem['tier'] + " " + str(getItem['starting_bid']) + " " + getItem['item_lore'].replace(" ", "_") + " " + getItem['pot_profit'])
-                    ws.send_message("ADD " + getItem['item_name'].replace(" ", "_") + " " + get_name + " " + getItem['tier'] + " " + str(getItem['starting_bid']) + " " + getItem['item_lore'].replace(" ", "_") + " " + getItem['pot_profit'])
+                    print("ADD " + getItem['item_name'].replace(" ", "_") + " " + get_name + " " + getItem['tier'] + " " + str(getItem['starting_bid']) + " " + getItem['item_lore'].replace(" ", "_") + " " + str(getItem['pot_profit']))
+                    ws.send_message("ADD " + getItem['item_name'].replace(" ", "_") + " " + get_name + " " + getItem['tier'] + " " + str(getItem['starting_bid']) + " " + getItem['item_lore'].replace(" ", "_") + " " + str(getItem['pot_profit']))
     def run(self):
         while True:
             if len(connections) > 0:
