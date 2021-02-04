@@ -44,7 +44,18 @@ keywords = [
     "Diamante's Handle", 
     "Necron's Handle",
     "Soul Eater",
-    "Last Stand"
+    "Last Stand",
+    "Spirit Sceptre",
+    "Flower of Truth",
+    "Yeti Sword",
+    "Livid Dagger",
+    "Giant's Sword",
+    "Spirit Wing",
+    "Spirit Bone",
+    "Frozen Scythe", 
+    "Ice Spray Wand", 
+    "Jerry-Chine Gun", 
+    "Bonzo's staff"
 ]
 
 connections = []
