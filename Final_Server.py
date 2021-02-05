@@ -13,7 +13,6 @@ CHECK_PROCENT = 20
 
 keywords = [
     "] Baby Yeti",
-    "Dragon Claw",
     "Aspect of the Dragons",
     "Mana Flux",
     "Storm's Helmet",
@@ -31,8 +30,11 @@ keywords = [
     "Adaptive Helm",
     "Adaptive Chestplate",
     "Adaptive Leggings",
-    "Adaptive Boots",
     "Pigman Sword",
+    "Wither Helm",
+    "Wither Chestplate",
+    "Wither Leggings",
+    "] Ender Dragon",
     "] Parrot",
     "Shadow Assassin Helmet",
     "Shadow Assassin Chestplate",
@@ -55,12 +57,16 @@ keywords = [
     "Frozen Scythe", 
     "Ice Spray Wand", 
     "Jerry-Chine Gun", 
-    "Bonzo's staff"
+    "Bonzo's staff",
+    "Rod of Legends",
+    "Dragon Horn"
 ]
 
 connections = []
 duplicates = []
 new_dupes = []
+
+PORT = os.getenv('PORT')
 
 class Handler(threading.Thread):
     def getName(self, uuid):
@@ -134,7 +140,7 @@ class Handler(threading.Thread):
     def run(self):
         while True:
             if len(connections) > 0:
-                print("Fetching ...")
+                print("Fetching ... (On PORT " + PORT + ")")
                 asyncio.run(self.LoadData())
                 global duplicates
                 global new_dupes
@@ -146,7 +152,8 @@ class Handler(threading.Thread):
 
 class Server(WebSocket):
     def handle(self):
-        self.send_message(self.data)
+        for ws in connections:
+            ws.send_message(self.data)
 
     def connected(self):
         print(self.address, 'connected')
