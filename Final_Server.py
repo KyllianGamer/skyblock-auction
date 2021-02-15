@@ -13,6 +13,7 @@ CHECK_PROCENT = 20
 
 keywords = [
     "] Baby Yeti",
+    "] Blue Whale",
     "Aspect of the Dragons",
     "Mana Flux",
     "Storm's Helmet",
@@ -59,7 +60,8 @@ keywords = [
     "Jerry-Chine Gun", 
     "Bonzo's staff",
     "Rod of Legends",
-    "Dragon Horn"
+    "Dragon Horn",
+    "Builder's Wand"
 ]
 
 connections = []
@@ -153,7 +155,7 @@ class Handler(threading.Thread):
 class Server(WebSocket):
     def handle(self):
         for ws in connections:
-            ws.send_message(self.data)
+            ws.send_message("MSG " + self.data)
 
     def connected(self):
         print(self.address, 'connected')
