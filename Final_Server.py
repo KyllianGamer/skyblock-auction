@@ -154,6 +154,7 @@ class Handler(threading.Thread):
 
 class Server(WebSocket):
     def handle(self):
+        print("MSG " + self.data)
         for ws in connections:
             ws.send_message("MSG " + self.data)
 
